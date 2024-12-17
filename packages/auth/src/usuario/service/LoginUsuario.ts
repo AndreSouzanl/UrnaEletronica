@@ -1,10 +1,16 @@
-import usuarios from "../../constants/usuarios";
+import RepositorioUsuario from "../interface/RepositorioUsuario";
 import  Usuario  from "../model/usuario";
 
 
-export default function loginUsuario(email: string, senha: string): Usuario | never {
+export default async function loginUsuario(props: {
+  repo: RepositorioUsuario
+  email: string 
+  senha: string
+}): Promise<Usuario | never> {
   
-  const usuario = usuarios.find((usuario) => usuario.email === email && usuario.senha === senha)
+  const { repo, email, senha } = props
+  
+  const usuario = await repo.buscarPorEmail(email)
   
   if(!usuario){
        throw new Error('Usuário não foi encontrado')

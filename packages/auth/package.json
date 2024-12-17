@@ -1,12 +1,18 @@
 {
   "name": "@urna/auth",
   "version": "1.0.0",
-  "main": "src/index.ts",
+  "main": "dist/index.js",
+  "types":"dist/index.d.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsup src/index.ts --dts --minify",
+    "build:packages":"tsup src/index.ts --dts --minify",
+    "dev": "tsup src/index.ts --dts --watch"
   },
   "keywords": [],
   "author": "André Souza",
   "license": "ISC",
-  "description": ""
+  "description": "",
+  "devDependencies": {
+    "tsup": "^8.3.5"
+  }
 }
