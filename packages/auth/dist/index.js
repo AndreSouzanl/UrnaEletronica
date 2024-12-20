@@ -20,6 +20,7 @@ var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: tru
 var src_exports = {};
 __export(src_exports, {
   loginUsuario: () => loginUsuario,
+  registrarUsuario: () => registrarUsuario,
   usuarios: () => usuarios_default
 });
 module.exports = __toCommonJS(src_exports);
@@ -77,8 +78,18 @@ async function loginUsuario(props) {
   }
   return { ...usuario, senha: void 0 };
 }
+
+// src/usuario/service/registrarUsuario .ts
+async function registrarUsuario(props) {
+  const { repo, usuario } = props;
+  const usuarioExistente = await repo.buscarPorEmail(usuario.email);
+  if (usuarioExistente) throw new Error("Usu\xE1rio ja existente");
+  const senhaCriptografada = await props.cripto.criptografar(usuario.senha);
+  await repo.salvar({ ...usuario, senha: senhaCriptografada });
+}
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
   loginUsuario,
+  registrarUsuario,
   usuarios
 });
