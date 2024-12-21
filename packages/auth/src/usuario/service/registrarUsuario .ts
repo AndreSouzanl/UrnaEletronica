@@ -6,6 +6,7 @@ export default async function registrarUsuario(props: {
   repo: RepositorioUsuario
   cripto: ProvedorSenhaCriptografada
   usuario: Partial<Usuario>
+  
 }): Promise<void> {
   const { repo, usuario } = props;
 

@@ -1,7 +1,6 @@
-import { loginUsuario, registrarUsuario, Usuario } from '@urna/auth';
 import { Body, Controller, Post } from '@nestjs/common';
-import RepositorioUsuarioArray from './usuario-array.repository';
-import jwt from 'jsonwebtoken';
+import { loginUsuario, registrarUsuario, Usuario } from '@urna/auth';
+import * as jwt from 'jsonwebtoken';
 import BcryptProvider from './bcrypt.provider';
 import { UsuarioPrisma } from './usuario.prisma';
 
@@ -9,7 +8,7 @@ import { UsuarioPrisma } from './usuario.prisma';
 export class AuthController {
   constructor(
     private repo: UsuarioPrisma,
-    private cripto:  BcryptProvider,
+    private cripto: BcryptProvider,
   ) {}
   @Post('login')
   async login(@Body() usuarioInformado: Partial<Usuario>) {
@@ -34,5 +33,6 @@ export class AuthController {
       cripto: this.cripto,
       usuario,
     });
+    console.log(usuario);
   }
 }

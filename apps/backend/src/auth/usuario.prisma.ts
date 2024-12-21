@@ -1,12 +1,12 @@
 import { Injectable } from '@nestjs/common';
 import { RepositorioUsuario, Usuario } from '@urna/auth';
-import { PrismaProvider } from 'src/prisma.provider';
+import { PrismaProvider } from 'src/db/prisma.provider';
 
 @Injectable()
 export class UsuarioPrisma implements RepositorioUsuario {
   constructor(private readonly prisma: PrismaProvider) {}
 
-  buscarPorId(id: number): Promise<Usuario | null> {
+   buscarPorId(id: number): Promise<Usuario | null> {
     return this.prisma.usuario.findUnique({
       where: { id },
     });
