@@ -13,8 +13,16 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
-    "@urna/shared": "*"
+      "@urna/shared": "*"
 },
+"compilerOptions": {
+		"target": "es2016",
+		"esModuleInterop": true,
+		"forceConsistentCasingInFileNames": true,
+		"strict": true,
+		"skipDefaultLibCheck": true,
+		"skipLibCheck": true
+	},
   "devDependencies": {
     "tsup": "^8.3.5"
   }

@@ -20,4 +20,9 @@ Content-Type: application/json
   "senha": "senha123"
 }
 
+###
+
+GET http://localhost:4000/auth/usuario/1
+
+
 

@@ -9,7 +9,6 @@ export default async function loginUsuario(props: {
 }): Promise<Usuario | never> {
   
   const { repo, email, senha } = props
-  
   const usuario = await repo.buscarPorEmail(email)
   
   if(!usuario){

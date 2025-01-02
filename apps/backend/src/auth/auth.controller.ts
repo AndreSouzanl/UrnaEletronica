@@ -1,5 +1,6 @@
 import { Body, Controller, Post } from '@nestjs/common';
-import { loginUsuario, registrarUsuario, Usuario } from '@urna/auth';
+import { loginUsuario, registrarUsuario, Usuario } from '@urna/auth'; 
+
 import * as jwt from 'jsonwebtoken';
 import BcryptProvider from './bcrypt.provider';
 import { UsuarioPrisma } from './usuario.prisma';
@@ -16,7 +17,7 @@ export class AuthController {
       const usuario = await loginUsuario({
         repo: this.repo,
         email: usuarioInformado.email,
-        senha: usuarioInformado.senha,
+      senha: usuarioInformado.senha,
       });
       return {
         token: jwt.sign(usuario, 'chave', {
@@ -33,6 +34,6 @@ export class AuthController {
       cripto: this.cripto,
       usuario,
     });
-    console.log(usuario);
+    console.log('USUARIO DO REGISTRO',usuario);
   }
 }
